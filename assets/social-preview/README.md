@@ -8,6 +8,7 @@ The image GitHub shows when a repository link is shared (1280 × 640, set by han
 | `repo-strata.png` | Strata | Atlas |
 | `repo-muster.png` | Muster | Term |
 | `repo-lockedworld.png` | The Locked World | Brax |
+| `repo-open-source-the-world.png` | Open Source the World | Null |
 | `repo-template-example.png` | example of the Studio's plain template | Brick |
 
 ## Making one for a new project
