@@ -20,10 +20,15 @@ jobs:
             const pr = context.payload.pull_request;
             const author = pr.user.login;
             const { owner, repo } = context.repo;
-            // Maintainers are not newcomers. Check write access to the repository: author_association
-            // is not reliable here, it says CONTRIBUTOR for a member whose organization membership is private.
-            let permission = 'none';
-            try { permission = (await github.rest.repos.getCollaboratorPermissionLevel({ owner, repo, username: author })).data.permission; } catch {}
+            // Maintainers are not newcomers. author_association is not reliable here: it says CONTRIBUTOR for a
+            // member whose organization membership is private.
+            // 1. Only people with write access can merge, so a pull request merged by its own author is a maintainer's.
+            if (pr.merged_by?.login === author) return core.info(`${author} merged their own pull request: skipped`);
+            // 2. Write access, when the workflow token is allowed to read it. Log what it says, never fail silently.
+            let permission = 'unknown';
+            try { permission = (await github.rest.repos.getCollaboratorPermissionLevel({ owner, repo, username: author })).data.permission; }
+            catch (e) { core.info(`could not read ${author}'s permission (${e.status || ''} ${e.message})`); }
+            core.info(`${author}'s permission on ${repo}: ${permission}`);
             if (['admin', 'maintain', 'write'].includes(permission)) return core.info(`${author} has ${permission} access: skipped`);
             // Any other merged PR by this author in this repo? The pulls API is always current;
             // the search index can lag a few minutes behind and miss the PR just merged.
