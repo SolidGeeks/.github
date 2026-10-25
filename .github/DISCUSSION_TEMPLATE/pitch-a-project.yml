@@ -1,0 +1,62 @@
+title: "[Pitch] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ![New quest unlocked.](https://raw.githubusercontent.com/SolidGeeks/.github/main/assets/banners/feature.png)
+
+        **Got an app the world should have in the open?** Pitch it here. A good pitch starts with a problem people really have, not with a stack. The crew will ask questions, and if it holds up we help you find people and hold it to the [Solid standard](https://github.com/SolidGeeks/.github/blob/main/CONTRIBUTING.md).
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: Who is stuck, and on what? What do they use today, and why is it not good enough (closed, expensive, abandoned, unsafe)?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: The app
+      description: What it does, in a few sentences. What would a first version do, and what would it leave out?
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of project
+      description: It decides the license, from our [licensing policy](https://github.com/SolidGeeks/.github/blob/main/CONTRIBUTING.md#licensing).
+      options:
+        - App or service (AGPL-3.0-or-later)
+        - Library (MPL-2.0)
+        - SDK or standard (Apache-2.0)
+        - Docs or guide (CC BY-SA 4.0)
+        - Not sure yet
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where it stands
+      options:
+        - Just an idea
+        - A prototype exists
+        - It already runs somewhere
+    validations:
+      required: true
+  - type: textarea
+    id: crew
+    attributes:
+      label: The crew you need
+      description: Skills you are looking for, and what you will bring yourself.
+      placeholder: |
+        I bring: ...
+        Looking for: ...
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you post
+      options:
+        - label: I searched the existing pitches and this is not a duplicate.
+          required: true
+        - label: I am fine with the project being free software, built in the open.
+          required: true
