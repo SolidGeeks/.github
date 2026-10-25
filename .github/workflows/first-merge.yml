@@ -1,0 +1,46 @@
+# Reusable workflow: celebrates a contributor's first merged pull request in a repository with Bit's card.
+# Repositories call it from a small workflow (see workflow-templates/first-merge.yml), so the logic lives here only.
+# Never add a checkout step: callers run on pull_request_target, with write access, even for pull requests from forks.
+name: First merge (reusable)
+
+on:
+  workflow_call:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  celebrate:
+    if: github.event.pull_request.merged == true && github.event.pull_request.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+            const { owner, repo } = context.repo;
+            // Maintainers are not newcomers. Check write access to the repository: author_association
+            // is not reliable here, it says CONTRIBUTOR for a member whose organization membership is private.
+            let permission = 'none';
+            try { permission = (await github.rest.repos.getCollaboratorPermissionLevel({ owner, repo, username: author })).data.permission; } catch {}
+            if (['admin', 'maintain', 'write'].includes(permission)) return core.info(`${author} has ${permission} access: skipped`);
+            // Any other merged PR by this author in this repo? The pulls API is always current;
+            // the search index can lag a few minutes behind and miss the PR just merged.
+            const closed = await github.paginate(github.rest.pulls.list, { owner, repo, state: 'closed', per_page: 100 });
+            if (closed.some(p => p.user?.login === author && p.merged_at && p.number !== pr.number)) return core.info(`${author} merged before: skipped`);
+            // Already celebrated (workflow re-run)?
+            const marker = '<!-- solid-geeks:first-merge -->';
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+            if (comments.some(c => c.body?.includes(marker))) return core.info('card already posted: skipped');
+            const studio = 'https://solidgeeks.github.io/SolidGeeks/studio.html';
+            const body = [
+              marker,
+              `![Achievement unlocked: first merge](https://raw.githubusercontent.com/SolidGeeks/.github/main/assets/discord/sg-xp.png)`,
+              ``,
+              `**Achievement unlocked: first merge.** Welcome to the crew, @${author}! 🎉`,
+              ``,
+              `Your card is ready to share: [make it here](${studio}?t=first-merge&handle=${encodeURIComponent(author)}&repo=${encodeURIComponent(repo)}&pr=${pr.number}).`,
+              `Come say hi on the [Discord](https://discord.gg/F9g5YFBzwY) and grab the **Contributor** role.`,
+            ].join('\n');
+            await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body });
