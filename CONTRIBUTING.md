@@ -36,7 +36,9 @@ The Solid Geeks name and logo are trademarks of the project. You can use them to
 
 ## Reviews
 
-Reviews are about the code, never the person. Expect questions; ask them too. Two approvals merge a change to a core project, one for docs.
+Reviews are about the code, never the person. Expect questions; ask them too.
+
+Every change, maintainers' included, goes through a pull request: `main` cannot be pushed to directly, and a pull request merges only once CI and the DCO check pass. While Solid Geeks has a single maintainer, no approval is required. Once the project has more maintainers, changes to core projects will need two approvals, and docs one.
 
 ## Conduct
 
