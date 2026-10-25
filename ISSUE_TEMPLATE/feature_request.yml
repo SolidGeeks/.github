@@ -1,0 +1,36 @@
+name: Feature request
+description: Propose a new quest. Start with the problem.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ![New quest unlocked.](https://raw.githubusercontent.com/SolidGeeks/.github/main/assets/banners/feature.png)
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: Who is stuck, and on what? A problem we all understand beats a solution nobody asked for.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: How you would solve it. Sketches and examples welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+  - type: dropdown
+    id: help
+    attributes:
+      label: Would you build it?
+      options:
+        - Yes, I'd like to open the pull request
+        - Yes, with some help
+        - No, just proposing
+    validations:
+      required: true

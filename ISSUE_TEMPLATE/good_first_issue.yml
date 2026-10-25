@@ -1,0 +1,41 @@
+name: Good first issue (maintainers)
+description: A small, well-scoped task for someone's first contribution.
+labels: ["good first issue", "help wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ![Your first rep starts here.](https://raw.githubusercontent.com/SolidGeeks/.github/main/assets/banners/good-first-issue.png)
+
+        A good first issue can be done in an afternoon, touches few files, and says exactly what "done" looks like.
+  - type: textarea
+    id: task
+    attributes:
+      label: The task
+      description: One paragraph, plain words.
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where to look
+      description: Files, functions, links to the relevant code.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      placeholder: |
+        - [ ] ...
+        - [ ] A test covers the change
+    validations:
+      required: true
+  - type: input
+    id: mentor
+    attributes:
+      label: Mentor
+      description: Who answers questions on this one?
+      placeholder: "@your-handle"
+    validations:
+      required: true

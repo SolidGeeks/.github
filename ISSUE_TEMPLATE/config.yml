@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/SolidGeeks/.github/blob/main/SECURITY.md
+    about: Never in a public issue. Read our security policy and report privately.
+  - name: Ask a question on Discord
+    url: https://solidgeeks.github.io/SolidGeeks/
+    about: Questions, ideas, help with a first pull request. Say hi.
