@@ -3,6 +3,9 @@ contact_links:
   - name: Report a security vulnerability
     url: https://github.com/SolidGeeks/.github/blob/main/SECURITY.md
     about: Never in a public issue. Read our security policy and report privately.
+  - name: Pitch a new project
+    url: https://github.com/orgs/SolidGeeks/discussions/new?category=pitch-a-project
+    about: An app you want to build in the open? Pitch it in Discussions and find a crew.
   - name: Ask a question on Discord
     url: https://solidgeeks.github.io/SolidGeeks/
     about: Questions, ideas, help with a first pull request. Say hi.
