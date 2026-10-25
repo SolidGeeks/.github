@@ -14,7 +14,7 @@ We build free software and hold it to professional standards. Your first pull re
 
 ## The Solid standard
 
-Every repository in the organization keeps these promises:
+Every software project in the organization (apps, services, libraries, SDKs) keeps these promises:
 
 - A license from our policy, with SPDX headers in source files
 - Tests run in CI on every pull request
@@ -22,6 +22,10 @@ Every repository in the organization keeps these promises:
 - Signed releases and a readable changelog
 - Docs a newcomer can follow to a first run
 - Commits signed off under the DCO
+
+A project served as a website, such as The Locked World, ships from `main`: the site you play is the release. It keeps a changelog, but has no release image to sign.
+
+The other repositories (the website, the logo kit, this `.github` repository) keep the promises that apply to them: a license from our policy, commits signed off under the DCO, and every change through a pull request.
 
 ## Language
 
