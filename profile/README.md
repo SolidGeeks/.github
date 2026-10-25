@@ -14,7 +14,9 @@
 
 | | |
 | --- | --- |
+| **[Muster](https://github.com/SolidGeeks/muster)** | Incident response playbooks, drawn, versioned and run live. AGPL-3.0. |
 | **[Strata](https://github.com/SolidGeeks/strata)** | A self-hosted 3D map of your information systems. AGPL-3.0. |
+| **[The Locked World](https://github.com/SolidGeeks/lockedworld)** | A ten-level top-down shooter in the browser, in French. AGPL-3.0. |
 
 ### Your first reps
 

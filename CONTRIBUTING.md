@@ -27,7 +27,7 @@ Every repository in the organization keeps these promises:
 
 | What | License |
 | --- | --- |
-| Apps and services | AGPL-3.0 |
+| Apps and services | AGPL-3.0-or-later |
 | Libraries | MPL-2.0 |
 | SDKs and standards | Apache-2.0 |
 | Docs and guides | CC BY-SA 4.0 |
