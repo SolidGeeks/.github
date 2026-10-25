@@ -23,6 +23,12 @@ Every repository in the organization keeps these promises:
 - Docs a newcomer can follow to a first run
 - Commits signed off under the DCO
 
+## Language
+
+Everything in our repositories is written in English, so that anyone can join: READMEs, docs and guides, code comments, commit messages, issues and pull requests.
+
+A product can speak another language to its users: The Locked World is a game in French, and its interface stays in French. Its documentation is still in English, and says which language the product uses.
+
 ## Licensing
 
 | What | License |
